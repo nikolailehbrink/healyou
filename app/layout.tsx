@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Inria_Sans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import Navbar from "@/components/layout/Navbar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -35,8 +36,12 @@ export default function RootLayout({
           "bg-background font-sans text-foreground scrollbar-thin scrollbar-track-neutral-800 scrollbar-thumb-primary",
         )}
       >
-        <main className="mx-auto my-4 min-h-screen max-w-screen-2xl rounded-[3rem] pb-8 dark:bg-neutral-900">
-          <div className="container min-h-screen">{children}</div>
+        <main className="mx-auto my-4 min-h-screen max-w-screen-2xl rounded-[3rem] py-4 pb-8 dark:bg-neutral-900">
+          <div className="container min-h-screen">
+            {" "}
+            <Navbar />
+            {children}
+          </div>
         </main>
       </body>
     </html>
