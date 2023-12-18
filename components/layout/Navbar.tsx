@@ -6,12 +6,16 @@ import { UserCircle } from "@phosphor-icons/react/dist/ssr";
 
 export default function Navbar() {
   return (
-    <nav className="sticky top-0 flex items-center py-4 dark:bg-neutral-900">
-      <div className="flex flex-1">
-        <Image width={114} height={36} alt="logo" src={"/healyou.svg"} />
+    <nav className="sticky top-0 flex items-center py-4">
+      <div className="absolute inset-0 -bottom-4 bg-gradient-to-b from-neutral-900 to-transparent"></div>
+
+      <div className="relative flex flex-1">
+        <Link href={"/"}>
+          <Image width={114} height={36} alt="logo" src={"/healyou.svg"} />
+        </Link>
       </div>
 
-      <menu className="flex gap-x-2">
+      <menu className="relative flex gap-x-2">
         {NavItems.map(({ href, name, icon }) => (
           <li key={href}>
             <Button
@@ -27,7 +31,7 @@ export default function Navbar() {
           </li>
         ))}
       </menu>
-      <div className="flex flex-1 justify-end">
+      <div className="relative flex flex-1 justify-end">
         <UserCircle size={36} weight="duotone" />
       </div>
     </nav>
