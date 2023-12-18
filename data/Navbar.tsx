@@ -2,8 +2,8 @@ import { ClipboardText, Footprints } from "@phosphor-icons/react/dist/ssr";
 
 export const NavItems = [
   {
-    name: "Diagnosis",
-    href: "/diagnosis",
+    name: "Diagnose",
+    href: "/diagnose",
     icon: <ClipboardText size={24} weight="duotone" />,
   },
   {
