@@ -36,8 +36,8 @@ export default function RootLayout({
           "bg-background font-sans text-foreground scrollbar-thin scrollbar-track-neutral-800 scrollbar-thumb-primary",
         )}
       >
-        <main className="mx-auto my-4 min-h-screen max-w-screen-2xl rounded-[3rem] py-4 pb-8 dark:bg-neutral-900">
-          <div className="container min-h-screen">
+        <main className="mx-auto my-4 min-h-[calc(100dvh-2rem)] max-w-screen-2xl rounded-[3rem] dark:bg-neutral-900">
+          <div className="container flex min-h-[inherit] flex-col gap-y-4">
             {" "}
             <Navbar />
             {children}
