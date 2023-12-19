@@ -1,9 +1,10 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { useChat } from "ai/react";
 import DiagnoseForm from "./form";
 import ChatForm from "@/components/ChatForm";
+import UserMessage from "@/components/UserMessage";
+import AssistantMessage from "@/components/AssistantMessage";
 
 export default function DiagnosePage() {
   const { messages, input, handleInputChange, handleSubmit, isLoading } =
@@ -16,20 +17,21 @@ export default function DiagnosePage() {
   return (
     <>
       <div className="h-full flex-grow">
-        <div className="mx-auto flex max-w-3xl flex-col gap-4">
-          {messages.map((message) => (
-            <div
-              key={message.id}
-              className={cn(
-                "flex rounded-2xl px-5 py-3",
-                message.role === "user"
-                  ? "ml-12 self-end bg-background"
-                  : "mr-12 items-start gap-2 bg-primary text-background",
+        <div>
+          <div className="mx-auto flex max-w-3xl flex-col gap-4 space-y-4">
+            {messages
+              .slice(1)
+              .map((message) =>
+                message.role === "user" ? (
+                  <UserMessage key={message.id} content={message.content} />
+                ) : (
+                  <AssistantMessage
+                    key={message.id}
+                    content={message.content}
+                  />
+                ),
               )}
-            >
-              {message.content}
-            </div>
-          ))}
+          </div>
         </div>
       </div>
       <div className="sticky bottom-4 mb-4 flex justify-center">
