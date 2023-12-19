@@ -7,18 +7,23 @@ import UserMessage from "@/components/UserMessage";
 import AssistantMessage from "@/components/AssistantMessage";
 
 export default function DiagnosePage() {
-  const { messages, input, handleInputChange, handleSubmit, isLoading } =
-    useChat({
-      api: "/api/diagnose",
-    });
-
-  console.log(messages);
+  const {
+    messages,
+    input,
+    handleInputChange,
+    handleSubmit,
+    isLoading,
+    append,
+  } = useChat({
+    api: "/api/diagnose",
+  });
 
   return (
     <>
       <div className="h-full flex-grow">
         <div>
           <div className="mx-auto flex max-w-3xl flex-col gap-4 space-y-4">
+            <DiagnoseForm append={append} formSend={messages.length > 0} />
             {messages
               .slice(1)
               .map((message) =>
