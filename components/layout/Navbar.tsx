@@ -6,7 +6,7 @@ import { UserCircle } from "@phosphor-icons/react/dist/ssr";
 
 export default function Navbar() {
   return (
-    <nav className="sticky top-0 flex items-center py-4">
+    <nav className="sticky top-0 z-50 flex items-center py-4">
       <div className="absolute inset-0 -bottom-4 bg-gradient-to-b from-neutral-900 to-transparent"></div>
 
       <div className="relative flex flex-1">
