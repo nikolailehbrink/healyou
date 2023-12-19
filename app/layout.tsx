@@ -3,6 +3,7 @@ import { Inter, Inria_Sans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/layout/Navbar";
+import InfoBanner from "@/components/InfoBanner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -40,6 +41,7 @@ export default function RootLayout({
           <div className="container flex min-h-[inherit] flex-col gap-y-4">
             {" "}
             <Navbar />
+            <InfoBanner />
             {children}
           </div>
         </main>
