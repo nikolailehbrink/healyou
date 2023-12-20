@@ -17,7 +17,12 @@ const inriaSans = Inria_Sans({
   variable: "--font-inria-sans",
 });
 
+const defaultUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "http://localhost:3000";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(defaultUrl),
   title: "HealYou - Revolutionizing Self-Care with the Help of AI",
   description:
     "HealYou is a revolutionary new app that helps you take care of yourself with the help of AI.",

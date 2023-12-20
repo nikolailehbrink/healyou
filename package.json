@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
@@ -18,26 +17,28 @@
     "ai": "^2.2.29",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
-    "lucide-react": "^0.298.0",
+    "lucide-react": "^0.299.0",
     "next": "14.0.4",
-    "openai": "^4.23.0",
-    "react": "^18",
-    "react-dom": "^18",
+    "openai": "^4.24.0",
     "react-hook-form": "^7.49.2",
     "react-markdown": "^9.0.1",
     "tailwind-merge": "^2.1.0",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.22.4"
+    "zod": "^3.22.4",
+    "@supabase/ssr": "latest",
+    "@supabase/supabase-js": "latest",
+    "autoprefixer": "10.4.15",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "tailwindcss": "3.3.3",
+    "typescript": "5.3.3"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
     "@total-typescript/ts-reset": "^0.5.1",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "@typescript-eslint/eslint-plugin": "^6.14.0",
-    "@typescript-eslint/parser": "^6.14.0",
-    "autoprefixer": "^10.0.1",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "autoprefixer": "^10.4.16",
     "eslint": "^8.56.0",
     "eslint-config-next": "14.0.4",
     "eslint-config-prettier": "^9.1.0",
@@ -45,7 +46,11 @@
     "prettier": "^3.1.1",
     "prettier-plugin-tailwindcss": "^0.5.9",
     "tailwind-scrollbar": "^3.0.5",
-    "tailwindcss": "^3.3.0",
-    "typescript": "^5.3.3"
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.3.3",
+    "@types/node": "20.10.5",
+    "@types/react": "18.2.45",
+    "@types/react-dom": "18.2.18",
+    "encoding": "^0.1.13"
   }
 }

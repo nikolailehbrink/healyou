@@ -6,7 +6,7 @@ export default function InfoBanner() {
       <Info weight="duotone" size={20} />
       <p>
         This site is for initial guidance only, not a substitute for a
-        doctor&apos;s advice.
+        professional&apos;s advice.
       </p>
     </div>
   );
