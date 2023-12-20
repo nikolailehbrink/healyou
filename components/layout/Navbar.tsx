@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import { UserCircle } from "@phosphor-icons/react/dist/ssr";
+import AuthInfo from "../AuthInfo";
 
 export default function Navbar() {
   return (
@@ -32,7 +33,7 @@ export default function Navbar() {
         ))}
       </menu>
       <div className="relative flex flex-1 justify-end">
-        <UserCircle size={36} weight="duotone" />
+        <AuthInfo />
       </div>
     </nav>
   );
