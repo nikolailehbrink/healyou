@@ -1,5 +1,5 @@
-import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
+import { createClient, getUser } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -32,14 +32,7 @@ export default async function Login({
 }: {
   searchParams: { message: string; type: string };
 }) {
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (user) {
+  if (await getUser()) {
     return redirect("/");
   }
 

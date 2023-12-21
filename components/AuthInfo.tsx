@@ -1,4 +1,4 @@
-import { createClient } from "@/utils/supabase/server";
+import { createClient, getUser } from "@/utils/supabase/server";
 import {
   FingerprintSimple,
   SignOut,
@@ -18,12 +18,7 @@ import {
 } from "./ui/dropdown-menu";
 
 export default async function AuthInfo() {
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getUser();
 
   async function signOut() {
     "use server";
