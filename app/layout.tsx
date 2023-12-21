@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/layout/Navbar";
 import InfoBanner from "@/components/InfoBanner";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -42,9 +43,9 @@ export default function RootLayout({
           "bg-background font-sans text-foreground scrollbar-thin scrollbar-track-neutral-800 scrollbar-thumb-primary",
         )}
       >
+        <Toaster />
         <main className="mx-auto my-4 min-h-[calc(100dvh-2rem)] max-w-screen-2xl rounded-[3rem] dark:bg-neutral-900">
           <div className="container flex min-h-[inherit] flex-col gap-y-4">
-            {" "}
             <Navbar />
             <InfoBanner />
             {children}

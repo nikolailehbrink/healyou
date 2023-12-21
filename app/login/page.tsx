@@ -20,6 +20,7 @@ import {
   Signature,
 } from "@phosphor-icons/react/dist/ssr";
 import SocialLoginButton from "@/components/SocialLoginButton";
+import ToastNotification from "@/components/ToastNotification";
 
 export default async function Login({
   searchParams,
@@ -277,9 +278,10 @@ export default async function Login({
         </TabsContent>
       </Tabs>
       {searchParams?.message && (
-        <p className="mt-4 bg-foreground/10 p-4 text-center text-foreground">
-          {searchParams.message}
-        </p>
+        <ToastNotification
+          message={searchParams.message}
+          type={searchParams.type}
+        />
       )}
     </div>
   );
