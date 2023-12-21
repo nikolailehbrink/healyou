@@ -19,6 +19,7 @@ import {
   LinkedinLogo,
   Signature,
 } from "@phosphor-icons/react/dist/ssr";
+import SocialLoginButton from "@/components/SocialLoginButton";
 
 export default async function Login({
   searchParams,
@@ -105,7 +106,7 @@ export default async function Login({
         redirectTo: `${origin}/auth/callback`,
         queryParams: {
           access_type: "offline",
-          // prompt: "consent",
+          prompt: "consent",
         },
       },
     });
@@ -161,32 +162,20 @@ export default async function Login({
 
   return (
     <div className="flex flex-grow flex-col justify-center gap-4 self-center">
-      <div className="flex items-stretch gap-2 text-primary">
-        <form
-          className="flex w-full items-center justify-center rounded-lg bg-neutral-950 p-2"
-          action={signInWithGoogle}
-        >
-          <button>
-            <GoogleLogo size={40} weight="duotone" />
-          </button>
-        </form>
-        <form
-          action={signInWithLinkedIn}
-          className="flex w-full items-center justify-center rounded-lg bg-neutral-950 p-2"
-        >
-          <button>
-            <LinkedinLogo size={40} weight="duotone" />
-          </button>
-        </form>
-        <form
-          action={signInWithGitHub}
-          className="flex w-full items-center justify-center rounded-lg bg-neutral-950 p-2"
-        >
-          <button>
-            <GithubLogo size={40} weight="duotone" />
-          </button>
-        </form>
-      </div>
+      <form className="flex items-stretch gap-2 text-primary">
+        <SocialLoginButton
+          formAction={signInWithGoogle}
+          icon={<GoogleLogo size={40} weight="duotone" />}
+        />
+        <SocialLoginButton
+          formAction={signInWithLinkedIn}
+          icon={<LinkedinLogo size={40} weight="duotone" />}
+        />
+        <SocialLoginButton
+          formAction={signInWithGitHub}
+          icon={<GithubLogo size={40} weight="duotone" />}
+        />
+      </form>
       <div className="flex items-center gap-2">
         <hr className="flex-grow border-muted-foreground/50" />
         <span className="text-sm text-muted-foreground">
@@ -252,7 +241,7 @@ export default async function Login({
                 <div className="space-y-1">
                   <Label htmlFor="email-signup">Email</Label>
                   <Input
-                    id="email-signup"
+                    name="email-signup"
                     type="email"
                     placeholder="john.doe@example.com"
                     required
@@ -261,7 +250,7 @@ export default async function Login({
                 <div className="space-y-1">
                   <Label htmlFor="email-confirm-signup">Confirm email</Label>
                   <Input
-                    id="email-confirm-signup"
+                    name="email-confirm-signup"
                     type="email"
                     placeholder="john.doe@example.com"
                     required
