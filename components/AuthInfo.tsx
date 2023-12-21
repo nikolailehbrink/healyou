@@ -55,10 +55,10 @@ export default async function AuthInfo() {
       </DropdownMenuContent>
     </DropdownMenu>
   ) : (
-    <Button className="text-background" asChild>
+    <Button asChild>
       <Link href="/login">
         <FingerprintSimple size={24} weight="duotone" />
-        Sign in
+        Login
       </Link>
     </Button>
   );
