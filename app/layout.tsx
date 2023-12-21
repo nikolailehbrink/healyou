@@ -4,7 +4,9 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/layout/Navbar";
 import InfoBanner from "@/components/InfoBanner";
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
+import { CheckCircle, XCircle } from "@phosphor-icons/react/dist/ssr";
+import ToastNotification from "@/components/ToastNotification";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -43,7 +45,20 @@ export default function RootLayout({
           "bg-background font-sans text-foreground scrollbar-thin scrollbar-track-neutral-800 scrollbar-thumb-primary",
         )}
       >
-        <Toaster />
+        <Toaster
+          toastOptions={{
+            success: { icon: <CheckCircle size={24} weight="duotone" /> },
+            error: { icon: <XCircle size={24} weight="duotone" /> },
+            style: {
+              backgroundColor: "hsl(var(--background))",
+              borderColor: "hsl(var(--border))",
+              borderWidth: "2px",
+              color: "hsl(var(--foreground))",
+              borderRadius: "500px",
+            },
+          }}
+        />
+
         <main className="mx-auto my-4 min-h-[calc(100dvh-2rem)] max-w-screen-2xl rounded-[3rem] dark:bg-neutral-900">
           <div className="container flex min-h-[inherit] flex-col gap-y-4">
             <Navbar />
