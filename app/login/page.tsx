@@ -1,5 +1,5 @@
-import { headers, cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -21,7 +21,11 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import SocialLoginButton from "@/components/SocialLoginButton";
 import ToastNotification from "@/components/ToastNotification";
-import type { Provider } from "@supabase/supabase-js";
+import {
+  signInWithEmailAndPassword,
+  signInWithSocialProvider,
+  signUpWithEmailAndPassword,
+} from "./actions";
 
 export default async function Login({
   searchParams,
@@ -39,114 +43,29 @@ export default async function Login({
     return redirect("/");
   }
 
-  const signInWithEmailAndPassword = async (formData: FormData) => {
-    "use server";
-
-    const email = formData.get("email-login") as string;
-    const password = formData.get("password-login") as string;
-    const cookieStore = cookies();
-    const supabase = createClient(cookieStore);
-
-    console.log(email, password);
-
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-
-    if (error) {
-      console.log(error);
-      return redirect(`/login?type=error&message=${error.message}`);
-    }
-
-    return redirect("/");
-  };
-
-  const signUpWithEmailAndPassword = async (formData: FormData) => {
-    "use server";
-
-    const origin = headers().get("origin");
-    const email = formData.get("email-signup") as string;
-    const confirmEmail = formData.get("email-confirm-signup") as string;
-    const password = formData.get("password-signup") as string;
-    const cookieStore = cookies();
-    const supabase = createClient(cookieStore);
-
-    if (email !== confirmEmail) {
-      return redirect("/login?type=error&message=Emails not identical");
-    }
-
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: `${origin}/auth/callback`,
-      },
-    });
-
-    console.log(error?.message);
-
-    if (error) {
-      return redirect(`/login?type=error&message=${error.message}`);
-    }
-
-    return redirect(
-      "/login?type=success&message=Check email to continue sign in process",
-    );
-  };
-
-  const signInWithSocialProvider = async (
-    provider: Provider,
-    queryParams?: { [key: string]: string } | undefined,
-  ) => {
-    "use server";
-
-    const origin = headers().get("origin");
-    const cookieStore = cookies();
-    const supabase = createClient(cookieStore);
-
-    const { data, error } = await supabase.auth.signInWithOAuth({
-      provider,
-      options: {
-        redirectTo: `${origin}/auth/callback`,
-        queryParams,
-      },
-    });
-
-    console.log(data);
-
-    if (error) {
-      return redirect(`/login?type=error&message=${error.message}`);
-    }
-
-    return redirect(data.url);
-  };
+  const signInWithGoogle = signInWithSocialProvider.bind(null, "google", {
+    access_type: "offline",
+    prompt: "consent",
+  });
+  const signInWithLinkedIn = signInWithSocialProvider.bind(
+    null,
+    "linkedin_oidc",
+  );
+  const signInWithGitHub = signInWithSocialProvider.bind(null, "github");
 
   return (
     <div className="flex flex-grow flex-col justify-center gap-4 self-center">
-      <form className="flex items-stretch gap-2 text-primary">
+      <form className="flex items-stretch gap-2">
         <SocialLoginButton
-          formAction={async () => {
-            "use server";
-            return signInWithSocialProvider("google", {
-              access_type: "offline",
-              prompt: "consent",
-            });
-          }}
+          formAction={signInWithGoogle}
           icon={<GoogleLogo size={40} weight="duotone" />}
         />
         <SocialLoginButton
-          formAction={async () => {
-            "use server";
-            return signInWithSocialProvider("linkedin_oidc");
-          }}
+          formAction={signInWithLinkedIn}
           icon={<LinkedinLogo size={40} weight="duotone" />}
         />
         <SocialLoginButton
-          formAction={async () => {
-            "use server";
-            return signInWithSocialProvider("github");
-          }}
+          formAction={signInWithGitHub}
           icon={<GithubLogo size={40} weight="duotone" />}
         />
       </form>
