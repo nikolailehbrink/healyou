@@ -21,11 +21,12 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import SocialLoginButton from "@/components/SocialLoginButton";
 import ToastNotification from "@/components/ToastNotification";
+import type { Provider } from "@supabase/supabase-js";
 
 export default async function Login({
   searchParams,
 }: {
-  searchParams: { message: string };
+  searchParams: { message: string; type: string };
 }) {
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
@@ -55,8 +56,7 @@ export default async function Login({
 
     if (error) {
       console.log(error);
-
-      return redirect("/login?message=Could not authenticate user");
+      return redirect(`/login?type=error&message=${error.message}`);
     }
 
     return redirect("/");
@@ -73,9 +73,7 @@ export default async function Login({
     const supabase = createClient(cookieStore);
 
     if (email !== confirmEmail) {
-      return redirect(
-        "/login?message=Both emails have to contain the same adress.",
-      );
+      return redirect("/login?type=error&message=Emails not identical");
     }
 
     const { error } = await supabase.auth.signUp({
@@ -89,75 +87,38 @@ export default async function Login({
     console.log(error?.message);
 
     if (error) {
-      return redirect(`/login?message=${error.message}`);
+      return redirect(`/login?type=error&message=${error.message}`);
     }
 
-    return redirect("/login?message=Check email to continue sign in process");
+    return redirect(
+      "/login?type=success&message=Check email to continue sign in process",
+    );
   };
 
-  const signInWithGoogle = async () => {
+  const signInWithSocialProvider = async (
+    provider: Provider,
+    queryParams?: { [key: string]: string } | undefined,
+  ) => {
     "use server";
-    const origin = headers().get("origin");
 
+    const origin = headers().get("origin");
     const cookieStore = cookies();
     const supabase = createClient(cookieStore);
+
     const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: "google",
+      provider,
       options: {
         redirectTo: `${origin}/auth/callback`,
-        queryParams: {
-          access_type: "offline",
-          prompt: "consent",
-        },
+        queryParams,
       },
     });
 
     console.log(data);
 
     if (error) {
-      return redirect("/login?message=Could not authenticate user");
+      return redirect(`/login?type=error&message=${error.message}`);
     }
-    return redirect(data.url);
-  };
 
-  const signInWithLinkedIn = async () => {
-    "use server";
-    const origin = headers().get("origin");
-
-    const cookieStore = cookies();
-    const supabase = createClient(cookieStore);
-    const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: "linkedin_oidc",
-      options: {
-        redirectTo: `${origin}/auth/callback`,
-      },
-    });
-
-    console.log(data);
-
-    if (error) {
-      return redirect("/login?message=Could not authenticate user");
-    }
-    return redirect(data.url);
-  };
-  const signInWithGitHub = async () => {
-    "use server";
-    const origin = headers().get("origin");
-
-    const cookieStore = cookies();
-    const supabase = createClient(cookieStore);
-    const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: "github",
-      options: {
-        redirectTo: `${origin}/auth/callback`,
-      },
-    });
-
-    console.log(data);
-
-    if (error) {
-      return redirect("/login?message=Could not authenticate user");
-    }
     return redirect(data.url);
   };
 
@@ -165,15 +126,27 @@ export default async function Login({
     <div className="flex flex-grow flex-col justify-center gap-4 self-center">
       <form className="flex items-stretch gap-2 text-primary">
         <SocialLoginButton
-          formAction={signInWithGoogle}
+          formAction={async () => {
+            "use server";
+            return signInWithSocialProvider("google", {
+              access_type: "offline",
+              prompt: "consent",
+            });
+          }}
           icon={<GoogleLogo size={40} weight="duotone" />}
         />
         <SocialLoginButton
-          formAction={signInWithLinkedIn}
+          formAction={async () => {
+            "use server";
+            return signInWithSocialProvider("linkedin_oidc");
+          }}
           icon={<LinkedinLogo size={40} weight="duotone" />}
         />
         <SocialLoginButton
-          formAction={signInWithGitHub}
+          formAction={async () => {
+            "use server";
+            return signInWithSocialProvider("github");
+          }}
           icon={<GithubLogo size={40} weight="duotone" />}
         />
       </form>
