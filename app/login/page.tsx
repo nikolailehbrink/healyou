@@ -39,6 +39,72 @@ export default async function Login({
     return redirect("/");
   };
 
+  const signInWithGoogle = async () => {
+    "use server";
+    const origin = headers().get("origin");
+
+    const cookieStore = cookies();
+    const supabase = createClient(cookieStore);
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: `${origin}/auth/callback`,
+        queryParams: {
+          access_type: "offline",
+          // prompt: "consent",
+        },
+      },
+    });
+
+    console.log(data);
+
+    if (error) {
+      return redirect("/login?message=Could not authenticate user");
+    }
+    return redirect(data.url);
+  };
+
+  const signInWithLinkedIn = async () => {
+    "use server";
+    const origin = headers().get("origin");
+
+    const cookieStore = cookies();
+    const supabase = createClient(cookieStore);
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "linkedin_oidc",
+      options: {
+        redirectTo: `${origin}/auth/callback`,
+      },
+    });
+
+    console.log(data);
+
+    if (error) {
+      return redirect("/login?message=Could not authenticate user");
+    }
+    return redirect(data.url);
+  };
+  const signInWithGitHub = async () => {
+    "use server";
+    const origin = headers().get("origin");
+
+    const cookieStore = cookies();
+    const supabase = createClient(cookieStore);
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "github",
+      options: {
+        redirectTo: `${origin}/auth/callback`,
+      },
+    });
+
+    console.log(data);
+
+    if (error) {
+      return redirect("/login?message=Could not authenticate user");
+    }
+    return redirect(data.url);
+  };
+
   const signUp = async (formData: FormData) => {
     "use server";
 
@@ -87,6 +153,16 @@ export default async function Login({
         </svg>{" "}
         Back
       </Link>
+
+      <form action={signInWithGoogle}>
+        <button>Zu Google</button>
+      </form>
+      <form action={signInWithLinkedIn}>
+        <button>Zu LinkedIn</button>
+      </form>
+      <form action={signInWithGitHub}>
+        <button>Zu GitHub</button>
+      </form>
 
       <form
         className="flex w-full flex-1 flex-col justify-center gap-2 text-foreground animate-in"
