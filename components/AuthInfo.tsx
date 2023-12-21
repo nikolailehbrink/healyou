@@ -33,7 +33,7 @@ export default async function AuthInfo() {
 
     const { error } = await supabase.auth.signOut();
     console.log(error);
-    redirect("/");
+    redirect("/login");
   }
 
   return user ? (
