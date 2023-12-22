@@ -29,8 +29,6 @@ const formSchema = z.object({
 });
 
 export default function TherapyForm({ condition, append, formSend }: Props) {
-  console.log(condition);
-
   const form = useForm<z.infer<typeof formSchema>>({
     disabled: formSend,
     resolver: zodResolver(formSchema),
@@ -43,9 +41,6 @@ export default function TherapyForm({ condition, append, formSend }: Props) {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     await append({ content: values.healthCondition, role: "user" });
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
   }
   return (
     <Form {...form}>

@@ -59,26 +59,19 @@ export default function DiagnoseForm({ append, formSend }: Props) {
       },
     },
   });
-  // 2. Define a submit handler.
+
   async function onSubmit(values: z.infer<typeof InjuryScreeningSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
     await append({
       content: JSON.stringify(values),
       role: "user",
     });
-    // console.log(values);
-  }
-
-  function onError(errors: any) {
-    console.log("Form errors:", errors);
   }
 
   return (
     <Form {...form}>
       <form
         className="flex flex-col gap-4"
-        onSubmit={form.handleSubmit(onSubmit, onError)}
+        onSubmit={form.handleSubmit(onSubmit)}
       >
         <Tabs className="flex  flex-col gap-2" defaultValue="symptoms">
           <TabsList className="h-full flex-wrap self-center">
@@ -429,11 +422,7 @@ export default function DiagnoseForm({ append, formSend }: Props) {
             <p className="text-sm">
               <RequiredAsterisk /> This field is required
             </p>
-            <Button
-              className="self-start"
-              type="submit"
-              onClick={() => console.log("hallo")}
-            >
+            <Button className="self-start" type="submit">
               Get diagnosis
             </Button>
           </>

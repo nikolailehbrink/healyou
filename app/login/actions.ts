@@ -26,7 +26,6 @@ export const signInWithEmailAndPassword = async (formData: FormData) => {
   });
 
   if (error) {
-    console.log(error);
     return redirect(`/login?type=error&message=${error.message}`);
   }
 

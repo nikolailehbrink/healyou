@@ -11,8 +11,6 @@ type Props = {
 };
 
 export default function TherapyChat({ searchParams }: Props) {
-  console.log(searchParams);
-
   const condition = searchParams.condition ?? "";
 
   const {

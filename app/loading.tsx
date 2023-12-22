@@ -1,4 +1,3 @@
-import { CircleNotch } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 
 export default function Loading() {
