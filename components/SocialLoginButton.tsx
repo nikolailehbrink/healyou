@@ -13,7 +13,7 @@ export default function SocialLoginButton({
     <button
       {...props}
       formAction={formAction}
-      className="flex grow justify-center rounded-lg border-2 border-muted bg-neutral-950 p-2 text-muted-foreground hover:border-primary hover:bg-neutral-900 hover:text-foreground"
+      className="flex grow justify-center rounded-lg border-2 border-muted bg-neutral-950 p-2 text-muted-foreground hover:border-primary hover:bg-background hover:text-foreground"
     >
       {icon}
     </button>
