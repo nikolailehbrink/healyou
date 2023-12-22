@@ -1,6 +1,6 @@
 import { CircleNotch, PaperPlaneTilt } from "@phosphor-icons/react/dist/ssr";
-import { Button } from "./ui/button";
-import { Textarea } from "./ui/textarea";
+import { Button } from "../ui/button";
+import { Textarea } from "../ui/textarea";
 import type { ChangeEvent, FormEvent } from "react";
 import type { ChatRequestOptions } from "ai";
 

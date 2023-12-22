@@ -2,9 +2,9 @@
 
 import { useChat } from "ai/react";
 import DiagnoseForm from "./DiagnoseForm";
-import ChatForm from "@/components/ChatForm";
-import UserMessage from "@/components/UserMessage";
-import AssistantMessage from "@/components/AssistantMessage";
+import ChatForm from "@/components/chat/ChatForm";
+import UserMessage from "@/components/chat/UserMessage";
+import AssistantMessage from "@/components/chat/AssistantMessage";
 
 export default function DiagnoseChat() {
   const {
