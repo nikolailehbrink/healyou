@@ -7,6 +7,7 @@ import InfoBanner from "@/components/InfoBanner";
 import toast, { Toaster } from "react-hot-toast";
 import { CheckCircle, XCircle } from "@phosphor-icons/react/dist/ssr";
 import ToastNotification from "@/components/ToastNotification";
+import Footer from "@/components/layout/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -64,6 +65,7 @@ export default function RootLayout({
             <Navbar />
             <InfoBanner />
             {children}
+            <Footer />
           </div>
         </main>
       </body>
