@@ -1,5 +1,4 @@
-import { cookies } from "next/headers";
-import { createClient, getUser } from "@/utils/supabase/server";
+import { getUser } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -47,7 +46,7 @@ export default async function Login({
   const signInWithGitHub = signInWithSocialProvider.bind(null, "github");
 
   return (
-    <div className="flex flex-grow flex-col justify-center gap-4 self-center">
+    <div className="flex flex-grow flex-col justify-center gap-4 self-center duration-500 animate-in fade-in">
       <form className="flex items-stretch gap-2">
         <SocialLoginButton
           formAction={signInWithGoogle}
