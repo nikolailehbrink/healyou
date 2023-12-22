@@ -1,6 +1,7 @@
 import OpenAI from "openai";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import { languageModel } from "@/utils/openai/model";
+import type { ChatCompletionMessageParam } from "openai/resources/index.mjs";
 
 // Create an OpenAI API client (that's edge friendly!)
 const openai = new OpenAI({
@@ -11,7 +12,9 @@ const openai = new OpenAI({
 export const runtime = "edge";
 
 export async function POST(req: Request) {
-  const { messages } = await req.json();
+  const { messages } = (await req.json()) as {
+    messages: ChatCompletionMessageParam[];
+  };
 
   // Ask OpenAI for a streaming chat completion given the prompt
   const response = await openai.chat.completions.create({
