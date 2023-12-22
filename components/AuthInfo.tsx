@@ -1,13 +1,11 @@
-import { createClient, getUser } from "@/utils/supabase/server";
+import { getUser } from "@/utils/supabase/server";
 import {
   FingerprintSimple,
   SignOut,
   UserCircle,
 } from "@phosphor-icons/react/dist/ssr";
-import { cookies } from "next/headers";
 import { Button } from "./ui/button";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,20 +14,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import { signOut } from "@/app/login/actions";
 
 export default async function AuthInfo() {
   const user = await getUser();
-
-  async function signOut() {
-    "use server";
-
-    const cookieStore = cookies();
-    const supabase = createClient(cookieStore);
-
-    const { error } = await supabase.auth.signOut();
-    console.log(error);
-    redirect("/");
-  }
 
   return user ? (
     <DropdownMenu>

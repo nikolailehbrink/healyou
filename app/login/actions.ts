@@ -5,6 +5,15 @@ import type { Provider } from "@supabase/supabase-js";
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 
+export async function signOut() {
+  const cookieStore = cookies();
+  const supabase = createClient(cookieStore);
+
+  const { error } = await supabase.auth.signOut();
+  console.error(error);
+  redirect("/");
+}
+
 export const signInWithEmailAndPassword = async (formData: FormData) => {
   const email = formData.get("email-login") as string;
   const password = formData.get("password-login") as string;
