@@ -14,7 +14,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { signOut } from "@/app/login/actions";
+import { signOut } from "@/app/auth/actions";
 
 export default async function AuthInfo() {
   const user = await getUser();

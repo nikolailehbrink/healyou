@@ -24,7 +24,7 @@ import {
   signInWithEmailAndPassword,
   signInWithSocialProvider,
   signUpWithEmailAndPassword,
-} from "./actions";
+} from "../auth/actions";
 
 export default async function Login({
   searchParams,
