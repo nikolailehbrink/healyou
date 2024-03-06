@@ -1,38 +1,34 @@
 # HealYou
 
-A comprehensive self-care and therapy web application built with React, Next.js, and Tailwind CSS. HealYou integrates advanced AI algorithms for personalized health assessments and therapy plans, leveraging a user-centric design approach for optimal user experience.
+A comprehensive self-care and therapy web application built with `Next.js`, `Tailwind CSS`, `Supabase` and the `AI SDK` from Vercel. HealYou integrates AI for personalized health assessments and therapy plans, leveraging a user-centric design approach for optimal user experience.
+
+> [!Caution]
+> This is a demo project, that I build for my portfolio. In their [usage policies](https://openai.com/policies/usage-policies) OpenAI does not allow "Providing tailored legal, medical/health, or financial advice without review by a qualified professional and disclosure of the use of AI assistance and its potential limitations". 
+
+https://github.com/nikolailehbrink/healyou/assets/38915700/5727f14c-3356-4f3e-b33d-c00142904743
 
 ## 🚑 Features
 
-- **AI-Driven Diagnosis**: Offers an intelligent self-diagnosis tool, utilizing AI algorithms for accurate health assessments.
-- **Personalized Therapy Plans**: Users can access customized therapeutic strategies and exercise routines based on their unique health profiles.
-- **Interactive User Interface**: Built with React and Next.js, ensuring a seamless and responsive user experience.
-- **Modern Design**: Utilizes Tailwind CSS for a clean, accessible, and mobile-friendly design.
-
-## 🌐 Open Source and Contribution
-
-HealYou is an open-source project, aiming to offer a comprehensive platform for self-care and therapy management. It's a valuable resource for those interested in personal health, AI integration in healthcare, and modern web development.
-
-### Contributing to the Project
-
-Contributions are welcome from developers of all backgrounds. To contribute:
-
-1. Fork the repository and create a new feature or fix branch.
-2. Submit a pull request with a detailed description of your changes or additions.
-
-### Reporting Bugs
-
-We value your feedback. For any bugs or issues, report them on the GitHub Issues page with detailed descriptions and reproduction steps.
+- **AI-Driven Diagnosis**: Offers an intelligent self-diagnosis tool, utilizing AI algorithms for health assessments.
+- **Personalized Therapy Plan**: Users get access to customized therapeutic strategies based on their diagnosis.
 
 ## 🧑‍💻 Running Locally
 
 Before running HealYou locally, ensure you have the latest versions of Node.js and npm installed.
 
+### Preliminary Requirements
+
+Before proceeding with the setup, it's essential to sign up for necessary services:
+
+- **Supabase:** Sign up at [Supabase](https://supabase.io/) and create a new project. This will provide you with the `Supabase URL` and `Supabase Anon Key` required for the environment variables.
+  
+- **OpenAI:** Register at [OpenAI](https://platform.openai.com/api-keys) to obtain an `OpenAI API Key`. This key is needed to integrate AI functionalities within the HealYou app.
+
 ### Setting Up the Environment
 
 1. Clone the repository:
 
-   ```bash
+   ```shell
    git clone https://github.com/nikolailehbrink/healyou.git
    ```
 
