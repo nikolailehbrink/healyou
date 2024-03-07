@@ -1,12 +1,13 @@
 # HealYou
 
-A comprehensive self-care and therapy web application built with `Next.js`, `Tailwind CSS`, `Supabase` and the `AI SDK` from Vercel. HealYou integrates AI for personalized health assessments and therapy plans, leveraging a user-centric design approach for optimal user experience.
+A comprehensive self-care and therapy web application built with [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), [Supabase](https://supabase.com/) and the [Vercel AI SDK](https://sdk.vercel.ai/docs). HealYou integrates AI for personalized health assessments and therapy plans, leveraging a user-centric design approach for optimal user experience.
 
 ![Header image](https://github.com/nikolailehbrink/healyou/assets/38915700/868b32cf-47d8-4386-861f-ecc0358e472c)
 
 > [!Caution]
-> This is a demo project, that I build for my portfolio. In their [usage policies](https://openai.com/policies/usage-policies) OpenAI does not allow "Providing tailored legal, medical/health, or financial advice without review by a qualified professional and disclosure of the use of AI assistance and its potential limitations". 
-
+> This is a demo project, that I build for my portfolio. In their [usage policies](https://openai.com/policies/usage-policies) OpenAI discourages the use of its API for these use cases:
+>> Don’t perform or facilitate the following activities that may significantly impair the safety, wellbeing, or rights of others, including:
+>> - a. Providing tailored legal, medical/health, or financial advice without review by a qualified professional and disclosure of the use of AI assistance and its potential limitations
 ## 🚑 Features
 
 - **AI-Driven Diagnosis**: Offers an intelligent self-diagnosis tool, utilizing AI algorithms for health assessments.
