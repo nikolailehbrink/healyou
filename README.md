@@ -11,23 +11,23 @@ A comprehensive self-care and therapy web application. HealYou integrates AI for
 
 ![Header image](https://github.com/nikolailehbrink/healyou/assets/38915700/868b32cf-47d8-4386-861f-ecc0358e472c)
 
-## 🚑 Features
+## ✨ Features
 
 - **AI-Driven Diagnosis**: Offers an intelligent self-diagnosis tool, utilizing AI algorithms for health assessments.
 - **Personalized Therapy Plan**: Users get access to customized therapeutic strategies based on their diagnosis.
 - **Authentication**: Implements user authentication using [Supabase Auth](https://supabase.com/docs/guides/auth) and social logins for Google, GitHub, and LinkedIn.
 
-## 🎬 Demo
+## 📽️ Demo
 
 https://github.com/nikolailehbrink/healyou/assets/38915700/5727f14c-3356-4f3e-b33d-c00142904743
 
-## 🚀 Technologies
+## 🛠️ Technologies
 
 - **Single Page Application**: Built with [Next.js 14](https://nextjs.org/) in [TypeScript](https://www.typescriptlang.org/).
 - **Modern Design**: Styled using [Tailwind CSS](https://tailwindcss.com/) and components from [shadcn/ui](https://ui.shadcn.com/), ensuring a visually appealing and responsive interface.
 - **AI Integration**: Utilizes the [Vercel AI SDK](https://sdk.vercel.ai/docs) to connect to the [OpenAI API](https://platform.openai.com/api-keys) for AI-driven health assessments and therapy planning.
 
-## 🧑‍💻 Running Locally
+## 💻 Running Locally
 
 Before running HealYou locally, ensure you have the latest versions of Node.js and npm installed.
 
