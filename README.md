@@ -25,7 +25,6 @@ https://github.com/nikolailehbrink/healyou/assets/38915700/5727f14c-3356-4f3e-b3
 
 - **Single Page Application**: Built with [Next.js 14](https://nextjs.org/) in [TypeScript](https://www.typescriptlang.org/).
 - **Modern Design**: Styled using [Tailwind CSS](https://tailwindcss.com/) and components from [shadcn/ui](https://ui.shadcn.com/), ensuring a visually appealing and responsive interface.
-- **Icons**: Utilizes Unicons from [Iconscout](https://iconscout.com/unicons) for a consistent and modern icon set.
 - **AI Integration**: Utilizes the [Vercel AI SDK](https://sdk.vercel.ai/docs) to connect to the [OpenAI API](https://platform.openai.com/api-keys) for AI-driven health assessments and therapy planning.
 
 ## 🧑‍💻 Running Locally
